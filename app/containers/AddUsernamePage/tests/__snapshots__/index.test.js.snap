@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddUsernamePage /> Should render and match the snapshot 1`] = `
+<div>
+  <h3>
+    Add Username Form
+  </h3>
+  <form>
+    <label
+      for="username_input"
+    >
+      <input
+        id="username_input"
+        placeholder="Insert username here"
+        type="text"
+      />
+    </label>
+    <input
+      readonly=""
+      type="submit"
+      value="Add"
+    />
+  </form>
+  <div />
+</div>
+`;

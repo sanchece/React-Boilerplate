@@ -25,7 +25,9 @@ import reducer from '../App/reducer';
 export function MainPage({ loadUsernames, usernameList, loading, error }) {
   useInjectSaga({ key: 'mainPage', saga });
   useInjectReducer({ key: 'App', reducer });
-
+  // useEffect(() => {
+  //   loadUsernames()
+  // });
   // console.debug('/MainPage/index, state:', { usernameList, loading, error });
   const usernamesListProps = {
     usernameList,
@@ -42,7 +44,6 @@ export function MainPage({ loadUsernames, usernameList, loading, error }) {
       <button type="button" onClick={loadUsernames}>
         Request usernames from server
       </button>
-
       <UsernamesList {...usernamesListProps} />
     </div>
   );

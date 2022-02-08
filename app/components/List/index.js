@@ -6,13 +6,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Li } from './li.style';
 function List({ usernameList }) {
   if (usernameList.length > 0) {
     return (
       <ul>
         {usernameList.map(username => (
-          <li>{username}</li>
+          <Li>● {username}</Li>
         ))}
       </ul>
     );

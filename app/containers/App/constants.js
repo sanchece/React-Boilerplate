@@ -24,6 +24,6 @@ export const USERNAMES_RECEIVED_STATUS =
   'Server usernames returned successfully.';
 
 export const USERNAME_ADD_STATUS = 'Adding username to server...';
-export const USERNAMES_ADD_FAILED_STATUS = 'Username add failed';
+export const USERNAMES_ADD_FAILED_STATUS = 'Failed to add username to server.';
 export const USERNAMES_ADD_SUCCESS_STATUS = 'Username added successfully.';
 export const INITIAL_STATE = 'INITIAL_STATE';

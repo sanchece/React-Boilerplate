@@ -16,7 +16,7 @@ describe('addUsernamePageReducer', () => {
     const expectedResult = state;
     expect(addUsernamePageReducer(undefined, {})).toEqual(expectedResult);
   });
-  it('should handle the changeUsername action correctly', () => {
+  it('should handle the updateUsername action correctly', () => {
     const fixture = 'other';
     const expectedResult = produce(state, draft => {
       draft.username = fixture;

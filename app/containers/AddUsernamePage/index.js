@@ -13,14 +13,12 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import reducer from './reducer';
 import saga from './saga';
-import { usernameAdd } from '../App/actions';
+import { usernameAdd, usernameAddFailed } from '../App/actions';
 import updateUsername from './actions';
-import { makeUsernameSelector } from './selectors';
 import { makeLoadingSelector, makeErrorSelector } from '../App/selectors';
 import StatusCard from '../../components/StatusCard';
-
+import { BLANK_USERNAME } from './constants';
 export function AddUsernamePage({
-  username,
   onUpdateUsername,
   onSubmitForm,
   loading,
@@ -46,11 +44,10 @@ export function AddUsernamePage({
             id="username_input"
             type="text"
             placeholder="Insert username here"
-            value={username}
             onChange={onUpdateUsername}
           />
         </label>
-        <input type="submit" value="Add" />
+        <input type="submit" value="Add" readOnly />
       </form>
       <StatusCard {...StatusProps} />
     </div>
@@ -58,7 +55,6 @@ export function AddUsernamePage({
 }
 
 AddUsernamePage.propTypes = {
-  username: PropTypes.string,
   onUpdateUsername: PropTypes.func,
   onSubmitForm: PropTypes.func,
   loading: PropTypes.object,
@@ -66,12 +62,11 @@ AddUsernamePage.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  username: makeUsernameSelector(),
   loading: makeLoadingSelector(),
   error: makeErrorSelector(),
 });
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
     onUpdateUsername: event => {
       dispatch(updateUsername(event.target.value));
@@ -79,8 +74,12 @@ function mapDispatchToProps(dispatch) {
     onSubmitForm: event => {
       if (event !== undefined && event.preventDefault) event.preventDefault();
       const username = event.target.username_input.value;
+      if (username === '' || username === null) {
+        dispatch(usernameAddFailed(BLANK_USERNAME));
+      } else {
+        dispatch(usernameAdd(username));
+      }
       // console.debug('/AddUsernamePage onSubmitForm(), username:', username);
-      dispatch(usernameAdd(username));
     },
   };
 }

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addUsername Saga githubDataSaga Saga should start task to watch for LOAD_REPOS action 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "action": Object {
+      "payload": Object {
+        "error": [TypeError: Cannot read properties of undefined (reading 'payload')],
+      },
+      "type": "app/usernameAddFailed",
+    },
+    "channel": undefined,
+  },
+  "type": "PUT",
+}
+`;
+
+exports[`addUsername Saga githubDataSaga Saga should start task to watch for LOAD_REPOS action 2`] = `undefined`;
+
+exports[`addUsername Saga should call the usernameAddFailed action if the response errors 1`] = `
+Object {
+  "@@redux-saga/IO": true,
+  "combinator": false,
+  "payload": Object {
+    "action": Object {
+      "payload": Object {
+        "error": [TypeError: Cannot read properties of undefined (reading 'payload')],
+      },
+      "type": "app/usernameAddFailed",
+    },
+    "channel": undefined,
+  },
+  "type": "PUT",
+}
+`;
+
+exports[`addUsername Saga should call the usernameAddFailed action if the response errors 2`] = `undefined`;
