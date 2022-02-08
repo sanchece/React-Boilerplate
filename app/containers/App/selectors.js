@@ -1,11 +1,35 @@
 import { createSelector } from 'reselect';
+import { initialState } from './reducer';
 
-const selectRouter = state => state.router;
+/**
+ * Direct selector to the mainPage state domain
+ */
 
-const makeSelectLocation = () =>
+const selectAppDomain = state => state.app || initialState;
+
+/**
+ * Other specific selectors
+ */
+
+const makeUsernamesSelector = () =>
   createSelector(
-    selectRouter,
-    routerState => routerState.location,
+    selectAppDomain,
+    appState => appState.usernameList,
+  );
+const makeLoadingSelector = () =>
+  createSelector(
+    selectAppDomain,
+    appState => appState.loading,
+  );
+const makeErrorSelector = () =>
+  createSelector(
+    selectAppDomain,
+    appState => appState.error,
   );
 
-export { makeSelectLocation };
+export {
+  makeUsernamesSelector,
+  makeLoadingSelector,
+  makeErrorSelector,
+  selectAppDomain,
+};
